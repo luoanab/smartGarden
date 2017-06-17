@@ -248,5 +248,7 @@ function power_sensor(sensor, on) {
 var sensors = {
     init_rpio: init_rpio,
     read_sensor_values: read_sensor_values,
+    open_pins: open_pins,
+    cleanup: cleanup	
 }
 module.exports = sensors;
