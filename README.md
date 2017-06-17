@@ -7,8 +7,10 @@ express --hbs
 npm install
 npm start
 
-
-
+#stop tracking node_modules
+git rm -r node_modules
+#create gitignore file
+vi .gitignore >> insert node_modules
 
 
 
