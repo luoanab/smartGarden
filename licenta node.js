@@ -47,7 +47,7 @@ function read_temp(){
 
 //read analog to digital function; used for luminosity sensor
 function readadc(adcnum, clockpin, mosipin, misopin, cspin) {
-    if ((adcnum > 7) or (adcnum < 0)) {
+    if ((adcnum > 7) || (adcnum < 0)) {
         return -1
     }
 
@@ -121,14 +121,14 @@ rpio.open(TRANSISTORR, rpio.OUTPUT);
 // #pin used as an input for the transistor that controlls the relay
 // GPIO.setup(TRANSISTORR, GPIO.OUT)
 
-var humiditySensorOn = True;
+var humiditySensorOn = true;
 
 try {
-    while(True) {
+    while(true) {
         if (humiditySensorOn) {
-            humiditySensorOn = False;
+            humiditySensorOn = false;
         } else {
-            humiditySensorOn = True;
+            humiditySensorOn = true;
         }
 
         var luminosityValue = readadc(1, SPICLK, SPIMOSI, SPIMISO, SPICS);
@@ -144,7 +144,7 @@ try {
         console.log("Temperature: " + temperatureValue);
 
         //GPIO.output(TRANSISTORH, humiditySensorOn)
-        isDry = False
+        isDry = false
         if (humiditySensorOn) {
         	rpio.write(TRANSISTORH, rpio.HIGH);
             isDry = rpio.read(HUMIDITY);
@@ -153,10 +153,10 @@ try {
         }
         	
         if (isDry) {
-            print "\nIt is dry!!! "
+            console.log("\nIt is dry!!! ")
         }
         else {
-            print "\nIt is not dry:) "
+            console.log("\nIt is not dry: ");
         }
 
         setTimeout(function (){}, 500);
