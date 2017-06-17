@@ -244,3 +244,9 @@ function power_sensor(sensor, on) {
 //        rpio.write(TRANSISTOR_RELAY, rpio.LOW);
 //    }
 //}
+
+var sensors = {
+    init_rpio: init_rpio,
+    read_sensor_values: read_sensor_values,
+}
+module.exports = sensors;
