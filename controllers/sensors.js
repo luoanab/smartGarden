@@ -136,6 +136,7 @@ function readadc(adcnum, clockpin, mosipin, misopin, cspin) {
 //returns an object with values from all sensors
 function read_sensor_values () {
     var sensor_values = {}
+    console.log("start reading sensor values");
     try {
         var temperature_val = read_temp();
         sensor_values.luminosity = read_luminosity();
