@@ -43,11 +43,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-sensors.init_rpio();
-sensors.open_pins();
+try {
+    sensors.init_rpio();
+    sensors.open_pins();
+    console.log("initialised pins successfully! :)");
+} catch(e) {
+    console.log("initialising pins failed... ", e);
+}
+
 
 //cleanup before stopping the server 
 on_death(function(signal, err) {
+    console.log("closing pins...");
     sensors.cleanup();
 });
 
