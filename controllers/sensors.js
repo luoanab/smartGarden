@@ -85,10 +85,11 @@ function read_temp(){
             temp_c: parseFloat(temp_string) / 1000.0,
             temp_f: temp_c * 9.0 / 5.0 + 32.0
         }
-        
+        console.log("temp is: ", temp);
         //return temp in C and F
         return temp;
     }
+    consolelog.log("temp reading failed ...");
 }
 
 //read analog to digital function; used for luminosity sensor
@@ -143,6 +144,7 @@ function read_sensor_values () {
         sensor_values.temperature_c = temperature_val.temp_c;
         sensor_values.temperature_f = temperature_val.temp_f;
         sensor_values.humidity = read_humidity();
+        console.log(temperature_val);
     } catch (e) {
         console.log("You killed me! =(... " + e);
     } finally {
