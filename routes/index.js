@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/sensors', function(req, res, next) {
-  res.send(sensors.read_sensor_values);
+  res.send(sensors.read_sensor_values());
 });
 
 module.exports = router;
