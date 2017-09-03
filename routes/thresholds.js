@@ -4,7 +4,7 @@ var sensors = require('../controllers/sensors.js')
 
 /* GET thresholds page. */
 router.get('/', function(req, res, next) {
-  res.render('thresholds', { title: 'Smart garden' });
+  return res.render('thresholds', { title: 'Smart garden' });
 });
 
 module.exports = router;

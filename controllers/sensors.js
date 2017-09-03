@@ -1,3 +1,5 @@
+var dbController = require('./dbController'),
+
 var rpio = require('rpio');
 var fs = require('fs');
 
@@ -248,10 +250,29 @@ function power_sensor(sensor, on) {
 //    }
 //}
 
+function set_operation_mode(data, callback) {
+    console.log("mode set to: ", data.mode);
+    return callback();
+}
+
+function get_operation_mode(data, callback) {
+    dbController.getOperationMode(null, function(err, response) {
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, {
+            operation_mode: response.operationMode
+        };        
+    })
+
+}
+
 var sensors = {
     init_rpio: init_rpio,
     read_sensor_values: read_sensor_values,
     open_pins: open_pins,
-    cleanup: cleanup	
+    cleanup: cleanup,
+    get_operation_mode: get_operation_mode,
+    set_operation_mode: set_operation_mode
 }
 module.exports = sensors;

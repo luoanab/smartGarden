@@ -6,10 +6,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var sensors = require('./controllers/sensors.js');
+var sensorsController = require('./controllers/sensors.js');
 var index = require('./routes/index');
 var settings = require('./routes/settings');
 var thresholds = require('./routes/thresholds');
+var sensors = require('./routes/sensors');
 
 var app = express();
 
@@ -25,9 +26,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/settings', settings);
+app.use('/sensors', sensors);
 app.use('/thresholds', thresholds);
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,8 +50,8 @@ app.use(function(err, req, res, next) {
 });
 
 try {
-    sensors.init_rpio();
-    sensors.open_pins();
+    sensorsController.init_rpio();
+    sensorsController.open_pins();
     console.log("initialised pins successfully! :)");
 } catch(e) {
     console.log("initialising pins failed... ", e);
@@ -59,7 +61,7 @@ try {
 //cleanup before stopping the server 
 on_death(function(signal, err) {
     console.log("closing pins...");
-    sensors.cleanup();
+    sensorsController.cleanup();
 });
 
 module.exports = app;
