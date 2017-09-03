@@ -3,7 +3,7 @@ var router = express.Router();
 var sensors = require('../controllers/sensors.js')
 
 /* GET settings page. */
-router.get('/settings', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('settings', { title: 'Smart garden' });
 });
 
