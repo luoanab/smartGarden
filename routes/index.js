@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Smart garden' });
 });
 
-/* GET home page. */
+/* GET sensors values */
 router.get('/sensors', function(req, res, next) {
   res.send(sensors.read_sensor_values());
 });
