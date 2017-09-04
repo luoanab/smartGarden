@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 var thresholds = require('../controllers/thresholds.js')
 
-/* GET thresholds values */
 router.get('/', function(req, res, next) {
+  return res.render('settings', { title: 'Smart garden' });
+});
+
+/* GET thresholds values */
+router.get('/all', function(req, res, next) {
     thresholds.getThresholds(null, function(err, response) {
         if (err) {
             return res.json({
