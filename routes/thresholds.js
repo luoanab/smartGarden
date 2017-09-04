@@ -37,6 +37,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
+    console.log(req.body);
     thresholds.setThresholds({
         id: req.params.id,
         lightUpperValue: req.body.lightUpperValue,
