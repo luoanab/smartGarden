@@ -29,6 +29,30 @@ var dbController = {
         return callback(null, {
             success: true
         })
+    },
+    
+    setThresholds: function(data, callback) {
+        callback = (typeof callback === 'function') ? callback : function() {}; 
+        
+        try {
+            db.push("/thresholds/"+data.id, data);
+        } catch (error) {
+            return callback({
+                error: error,
+                message: "An error occured while saving an item into the database."
+            });
+        }
+
+        return callback(null, {
+            success: true
+        });
+    },
+    
+    getThresholds: function(data, callback) {
+        callback = (typeof callback === 'function') ? callback : function() {};
+
+        var data = db.getData("/thresholds/"+data.id);
+        return callback(null, data);
     }
 };
 

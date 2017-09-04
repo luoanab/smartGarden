@@ -24,7 +24,7 @@ router.get('/operation', function(req, res, next){
 
 router.put('/operation', function(req, res, next){
     sensors.set_operation_mode({
-        mode: 'MANUAL'
+        mode: req.body.mode
     }, function (err, response){
         if (err) {
             return res.json({
