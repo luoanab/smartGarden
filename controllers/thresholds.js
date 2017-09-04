@@ -23,7 +23,7 @@ var thresholdsController = {
     },
     
     getThreshold: function(data, callback) {
-        dbController.getThreshold(data.id, function(err, response) {
+        dbController.getThreshold(data, function(err, response) {
             if (err) {
                 return callback(err);
             }
