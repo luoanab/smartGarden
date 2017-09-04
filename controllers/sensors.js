@@ -262,7 +262,7 @@ function get_operation_mode(data, callback) {
         }
         return callback(null, {
             operation_mode: response.operationMode
-        };        
+        });        
     })
 
 }
