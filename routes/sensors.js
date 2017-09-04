@@ -39,7 +39,7 @@ router.put('/operation', function(req, res, next){
 })
 
 router.put('/heat', function(req, res, next){
-    sensors.set_heat({
+    sensors.setHeat({
         state: req.body.state
     }, function(err, response) {
         if (err) {

@@ -241,7 +241,7 @@ function power_sensor(sensor, on) {
     }
 }
 
-function set_heat(state){
+function setHeat(state){
     power_sensor(TRANSISTOR_RELAY, state);
 }
 
@@ -290,6 +290,7 @@ var sensors = {
     open_pins: open_pins,
     cleanup: cleanup,
     get_operation_mode: get_operation_mode,
-    set_operation_mode: set_operation_mode
+    set_operation_mode: set_operation_mode,
+    setHeat: setHeat
 }
 module.exports = sensors;
