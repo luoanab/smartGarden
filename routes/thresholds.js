@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var thresholds = require('../controllers/thresholds.js')
 
-router.get('/', function(req, res, next) {
-  return res.render('thresholds', { title: 'Smart garden' });
-});
-
 /* GET thresholds values */
 router.get('/all', function(req, res, next) {
     thresholds.getThresholds(null, function(err, response) {
@@ -40,7 +36,7 @@ router.get('/:id', function(req, res, next) {
     })
 });
 
-router.put('/:id', function(req, res, next){
+router.put('/:id', function(req, res, next) {
     thresholds.setThresholds({
         id: req.params.id,
         lightUpperValue: req.body.lightUpperValue,
@@ -59,7 +55,11 @@ router.put('/:id', function(req, res, next){
         return res.json({
             success: true
         });
-    })
+    });
 })
+
+router.get('/', function(req, res, next) {
+  return res.render('thresholds', { title: 'Smart garden' });
+});
 
 module.exports = router;
