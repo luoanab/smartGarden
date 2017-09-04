@@ -3,7 +3,7 @@ $(document).ready(function(){
     var operationState;
     
     $.ajax({
-        url: "/operation"
+        url: "sensors/operation"
     }).done(function(response){
         operationState = response;
         if (operationState === "manual") {
