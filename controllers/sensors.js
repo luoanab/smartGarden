@@ -85,7 +85,7 @@ function read_temp(){
         temp_string = lines[1].slice(index_temp+2);
         temp = {
             temp_c: parseFloat(temp_string) / 1000.0,
-            temp_f: temp_c * 9.0 / 5.0 + 32.0
+            temp_f: parseFloat(temp_string) / 1000.0 * 9.0 / 5.0 + 32.0
         }
         console.log("temp is: ", temp);
         //return temp in C and F
