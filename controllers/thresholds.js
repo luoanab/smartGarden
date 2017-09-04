@@ -14,7 +14,16 @@ var tresholdsController = {
     },
     
     getThresholds: function(data, callback) {
-        dbController.getTresholds(data.id, function(err, response) {
+        dbController.getTresholds(null, function(err, response) {
+            if (err) {
+                return callback(err);
+            }
+            return callback(null, response);        
+        })
+    },
+    
+    getThreshold: function(data, callback) {
+        dbController.getTreshold(data.id, function(err, response) {
             if (err) {
                 return callback(err);
             }

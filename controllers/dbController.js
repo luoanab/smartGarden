@@ -48,10 +48,17 @@ var dbController = {
         });
     },
     
-    getThresholds: function(data, callback) {
+    getThreshold: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
 
         var data = db.getData("/thresholds/"+data.id);
+        return callback(null, data);
+    },
+    
+    getThresholds: function(data, callback) {
+        callback = (typeof callback === 'function') ? callback : function() {};
+
+        var data = db.getData("/thresholds");
         return callback(null, data);
     }
 };
