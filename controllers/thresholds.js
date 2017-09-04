@@ -4,6 +4,8 @@ var thresholdsController = {
  
     setThresholds: function(data, callback) {
         dbController.setThresholds(data, function(err, response) {
+            callback = (typeof callback === 'function') ? callback : function() {}; 
+            
             if (err) {
                 return callback(err);
             }
@@ -15,6 +17,8 @@ var thresholdsController = {
     
     getThresholds: function(data, callback) {
         dbController.getThresholds(null, function(err, response) {
+            callback = (typeof callback === 'function') ? callback : function() {}; 
+            
             if (err) {
                 return callback(err);
             }
@@ -24,6 +28,8 @@ var thresholdsController = {
     
     getThreshold: function(data, callback) {
         dbController.getThreshold(data, function(err, response) {
+            callback = (typeof callback === 'function') ? callback : function() {}; 
+            
             if (err) {
                 return callback(err);
             }
