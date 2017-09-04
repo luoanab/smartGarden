@@ -1,4 +1,4 @@
-var dbController = require('./dbController'),
+var dbController = require('./dbController');
 
 var rpio = require('rpio');
 var fs = require('fs');
