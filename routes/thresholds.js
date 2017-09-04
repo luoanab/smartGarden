@@ -3,7 +3,7 @@ var router = express.Router();
 var thresholds = require('../controllers/thresholds.js')
 
 router.get('/', function(req, res, next) {
-  return res.render('settings', { title: 'Smart garden' });
+  return res.render('thresholds', { title: 'Smart garden' });
 });
 
 /* GET thresholds values */
@@ -24,7 +24,7 @@ router.get('/all', function(req, res, next) {
 
 /* GET thresholds values */
 router.get('/:id', function(req, res, next) {
-    thresholds.getThresholds({
+    thresholds.getThreshold({
         id: req.params.id
     }, function(err, response) {
         if (err) {
