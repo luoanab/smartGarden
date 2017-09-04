@@ -1,4 +1,5 @@
 var dbController = require('./dbController');
+var thresholdsController = require('./thresholds');
 
 var rpio = require('rpio');
 var fs = require('fs');
@@ -16,6 +17,8 @@ var TRANSISTOR_RELAY = 13;
 //pins used for sensors
 var HUMIDITY_SENSOR = 19;
 var LUMINOSITY_SENSOR = 1; // this pin is on the shield, not on pi directly
+
+var thresholds = thresholdsController.getThresholds();
 
 //init rpio with custom options
 function init_rpio() {
@@ -245,22 +248,33 @@ function setHeat(state){
     power_sensor(TRANSISTOR_RELAY, state);
 }
 
-function set_humidity(state){
+function setWater(state){
     power_sensor(TRANSISTOR_HUMIDITY_SENSOR, state);
 }
 
-function set_light(state) {
+function setLight(state) {
     //power_sensor(, state);
 }
 
-//
-//function relay_on (bool) {
-//    if (bool) {
-//        rpio.write(TRANSISTOR_RELAY , rpio.HIGH);
-//    } else {
-//        rpio.write(TRANSISTOR_RELAY, rpio.LOW);
-//    }
-//}
+function get_heat_state() {
+    return false;
+}
+
+function get_light_state() {
+    return false;
+}
+
+function get_water_state() {
+    return false;
+}
+
+function relay_on (bool) {
+    if (bool) {
+        rpio.write(TRANSISTOR_RELAY , rpio.HIGH);
+    } else {
+        rpio.write(TRANSISTOR_RELAY, rpio.LOW);
+    }
+}
 
 function set_operation_mode(data, callback) {
     dbController.setOperationMode({operatinMode: data.mode}, function(err, response) {
@@ -291,6 +305,11 @@ var sensors = {
     cleanup: cleanup,
     get_operation_mode: get_operation_mode,
     set_operation_mode: set_operation_mode,
-    setHeat: setHeat
+    setHeat: setHeat,
+    setWater: setWater,
+    setLight: setLight,
+    get_heat_state: get_heat_state,
+    get_light_state: get_light_state,
+    get_water_state: get_water_state
 }
 module.exports = sensors;

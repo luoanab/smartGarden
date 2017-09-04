@@ -55,5 +55,82 @@ router.put('/heat', function(req, res, next){
     })
 })
 
+router.put('/water', function(req, res, next){
+    sensors.setWater({
+        state: req.body.state
+    }, function(err, response) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            })
+        }
+        return res.json({
+            success: true,
+            data: response
+        })
+    })
+})
 
+router.put('/light', function(req, res, next){
+    sensors.setLight({
+        state: req.body.state
+    }, function(err, response) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            })
+        }
+        return res.json({
+            success: true,
+            data: response
+        })
+    })
+})
+
+router.get('/heat/state', function(req, res, next){
+    sensors.get_heat_state(null, function(err, response) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            })
+        }
+        return res.json({
+            success: true,
+            data: response
+        })
+    })
+})
+
+router.get('/water/state', function(req, res, next){
+    sensors.get_water_state(null, function(err, response) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            })
+        }
+        return res.json({
+            success: true,
+            data: response
+        })
+    })
+})
+
+router.get('/light/state', function(req, res, next){
+    sensors.get_light_state(null, function(err, response) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            })
+        }
+        return res.json({
+            success: true,
+            data: response
+        })
+    })
+})
 module.exports = router;
