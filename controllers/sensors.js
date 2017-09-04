@@ -252,7 +252,14 @@ function power_sensor(sensor, on) {
 
 function set_operation_mode(data, callback) {
     console.log("mode set to: ", data.mode);
-    return callback();
+    dbController.setOperationMode({operatinMode: data.mode}, function(err, response) {
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, {
+            operation_mode: response.operationMode
+        });        
+    })
 }
 
 function get_operation_mode(data, callback) {
@@ -264,7 +271,6 @@ function get_operation_mode(data, callback) {
             operation_mode: response.operationMode
         });        
     })
-
 }
 
 var sensors = {

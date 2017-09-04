@@ -12,6 +12,23 @@ var dbController = {
         return callback(null, {
             operationMode: data
         })
+    },
+    
+    setOperationMode: function(data, callback) {
+        callback = (typeof callback === 'function') ? callback : function() {}; 
+        
+        try {
+            db.push("/operationMode", data.operatinMode);
+        } catch (error) {
+            return callback({
+                error: error,
+                message: "An error occured while saving an item into the database."
+            });
+        }
+
+        return callback(null, {
+            success: true
+        })
     }
 };
 
