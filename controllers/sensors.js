@@ -241,6 +241,18 @@ function power_sensor(sensor, on) {
     }
 }
 
+function set_heat(state){
+    power_sensor(TRANSISTOR_RELAY, state);
+}
+
+function set_humidity(state){
+    power_sensor(TRANSISTOR_HUMIDITY_SENSOR, state);
+}
+
+function set_light(state) {
+    //power_sensor(, state);
+}
+
 //
 //function relay_on (bool) {
 //    if (bool) {

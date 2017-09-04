@@ -38,4 +38,22 @@ router.put('/operation', function(req, res, next){
     })
 })
 
+router.put('/heat', function(req, res, next){
+    sensors.set_heat({
+        state: req.body.state
+    }, function(err, response) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            })
+        }
+        return res.json({
+            success: true,
+            data: response
+        })
+    })
+})
+
+
 module.exports = router;
