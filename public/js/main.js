@@ -1,4 +1,4 @@
-$.ready(function(){
+$.load(function(){
     var operationState;
     
     $.ajax({
