@@ -143,8 +143,8 @@ function read_sensor_values () {
     try {
         var temperature_val = read_temp();
         sensor_values.luminosity = read_luminosity();
-        sensor_values.temperature_c = temperature_val.temp_c;
-        sensor_values.temperature_f = temperature_val.temp_f;
+        sensor_values.temperature_c = temperature_val.temp_c || 0;
+        sensor_values.temperature_f = temperature_val.temp_f || 0;
         sensor_values.humidity = read_humidity();
         console.log(temperature_val);
     } catch (e) {
