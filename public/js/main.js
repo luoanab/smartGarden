@@ -5,22 +5,24 @@ $(document).ready(function(){
     $.ajax({
         url: "sensors/operation"
     }).done(function(response){
-        operationState = response;
-        if (operationState === "manual") {
+        operationState = response.operation_mode;
+        if (operationState === "MANUAL") {
             $('#automatic-mode').bootstrapToggle('off');
         } else {
             $('#automatic-mode').bootstrapToggle('on');
         }
     });
+    
+    bindEvents();
 })
 
 function bindEvents() {
     $('#automatic-mode').change(function() {
         $.ajax({
-            url: "/operation",
-            method: "POST",
+            url: "sensors/operation",
+            method: "PUT",
             data: {
-                mode: $('#automatic-mode').prop("checked")
+                mode: $('#automatic-mode').prop("checked") ? "AUTO" : "MANUAL"
             }
         });
     });
