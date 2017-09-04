@@ -3,7 +3,7 @@ var dbController = require('./dbController');
 var thresholdsController = {
  
     setThresholds: function(data, callback) {
-        dbController.setTresholds(data, function(err, response) {
+        dbController.setThresholds(data, function(err, response) {
             if (err) {
                 return callback(err);
             }
@@ -14,7 +14,7 @@ var thresholdsController = {
     },
     
     getThresholds: function(data, callback) {
-        dbController.getTresholds(null, function(err, response) {
+        dbController.getThresholds(null, function(err, response) {
             if (err) {
                 return callback(err);
             }
@@ -23,7 +23,7 @@ var thresholdsController = {
     },
     
     getThreshold: function(data, callback) {
-        dbController.getTreshold(data.id, function(err, response) {
+        dbController.getThreshold(data.id, function(err, response) {
             if (err) {
                 return callback(err);
             }
