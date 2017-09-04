@@ -52,7 +52,7 @@ function bindEvents() {
         var form = $(this).parent("form");
         
         $.ajax({
-            url: "threshold/"+form.attr("id"),
+            url: "thresholds/"+form.attr("id"),
             method: "PUT",
             data: {
                 lightUpperValue:form.find(".light-upper-value").val(),
