@@ -1,4 +1,5 @@
-$(document).load(function(){
+$(document).ready(function(){
+    console.log("yo");
     var operationState;
     
     $.ajax({
