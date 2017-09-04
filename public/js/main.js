@@ -5,7 +5,7 @@ $(document).ready(function(){
     $.ajax({
         url: "sensors/operation"
     }).done(function(response){
-        operationState = response.operation_mode;
+        operationState = response.data.operation_mode;
         if (operationState === "MANUAL") {
             $('#automatic-mode').bootstrapToggle('off');
         } else {
