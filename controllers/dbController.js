@@ -36,6 +36,7 @@ var dbController = {
         
         try {
             db.push("/thresholds/"+data.id, data);
+            console.log("setting threshld to : ", data);
         } catch (error) {
             return callback({
                 error: error,
