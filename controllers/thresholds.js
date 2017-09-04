@@ -1,6 +1,6 @@
 var dbController = require('./dbController');
 
-var tresholdsController = {
+var thresholdsController = {
  
     setThresholds: function(data, callback) {
         dbController.setTresholds(data, function(err, response) {
@@ -32,4 +32,4 @@ var tresholdsController = {
     }
 }
 
-module.exports = tresholdsController;
+module.exports = thresholdsController;
