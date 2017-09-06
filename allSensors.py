@@ -72,7 +72,7 @@ TRANSISTORH = 26
 TRANSISTORR = 13
 HUMIDITY = 19
 
-//pins for output for infrared lightulb and for water pump
+#pins for output for infrared lightulb and for water pump
 var INFRARED = 5;
 var PUMP = 6;
 
