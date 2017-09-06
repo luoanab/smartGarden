@@ -20,6 +20,9 @@ function getSensorsData() {
         url: "sensors"
     }).done(function(response){
         sensorValues = response.data;
+        $(".temp .sensor_value").val(data.temperature_c);
+        $(".light .sensor_value").val(data.luminosity);
+        $(".moisture .sensor_value").val(data.moisture);
     });
 }
 
@@ -118,5 +121,8 @@ function handleDropdownChange() {
 function bindEvents() {
     $('#automatic-mode').change(handleAutomaticModeChange);
     $('.threshold-submit').click(handleThresholdSumbit);
-    $('.dropdown-toggle.thresholds').on('hidden.bs.dropdown', handleDropdownChange);
+    //$('.dropdown-toggle.thresholds').on('hidden.bs.dropdown', handleDropdownChange);
+    setInterval(function(){
+        getSensorsData();
+    }, 10000);
 }
