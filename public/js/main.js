@@ -90,6 +90,6 @@ function handleShresholdSumbit(e) {
 }
 
 function bindEvents() {
-    $('#automatic-mode').change(handleAutomaticModeChange(e));
-    $('.threshold-submit').click(handleShresholdSumbit(e));
+    $('#automatic-mode').change(handleAutomaticModeChange());
+    $('.threshold-submit').click(handleShresholdSumbit());
 }
