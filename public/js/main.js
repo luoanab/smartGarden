@@ -20,9 +20,9 @@ function getSensorsData() {
         url: "sensors"
     }).done(function(response){
         sensorValues = response.data;
-        $(".temp .sensor_value").val(data.temperature_c);
-        $(".light .sensor_value").val(data.luminosity);
-        $(".moisture .sensor_value").val(data.moisture);
+        $(".temp .sensor_value").val(sensorValues.temperature_c);
+        $(".light .sensor_value").val(sensorValues.luminosity);
+        $(".moisture .sensor_value").val(sensorValues.moisture);
     });
 }
 
