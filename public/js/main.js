@@ -78,9 +78,9 @@ function handleThresholdSumbit(e) {
             lightUpperValue:form.find(".light-upper-value").val(),
             lightLowerValue: form.find(".light-lower-value").val(),
             tempUpperValue: form.find(".temp-upper-value").val(),
-            tempLowerValue: form.find(".temp-upper-value").val(),
+            tempLowerValue: form.find(".temp-lower-value").val(),
             moistureUpperValue: form.find(".moisture-upper-value").val(),
-            moistureLowerValue: form.find(".moisture-upper-value").val(),
+            moistureLowerValue: form.find(".moisture-lower-value").val(),
         }
     }).done(function(){
         //
