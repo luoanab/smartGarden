@@ -112,7 +112,7 @@ try:
 
         temperatureValue = read_temp()
         print "\nTemperature: ",temperatureValue
-        
+        print "\ncelsius: ", temperatureValue[0]
         if (temperatureValue > 27):
             GPIO.output(INFRARED, False);
         else:
