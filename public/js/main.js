@@ -65,7 +65,7 @@ function handleAutomaticModeChange() {
     });
 }
 
-function handleShresholdSumbit(e) {
+function handleThresholdSumbit(e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -76,7 +76,7 @@ function handleShresholdSumbit(e) {
         method: "PUT",
         data: {
             lightUpperValue:form.find(".light-upper-value").val(),
-            lightLowerValue: form.find(".light-upper-value").val(),
+            lightLowerValue: form.find(".light-lower-value").val(),
             tempUpperValue: form.find(".temp-upper-value").val(),
             tempLowerValue: form.find(".temp-upper-value").val(),
             moistureUpperValue: form.find(".moisture-upper-value").val(),
@@ -91,5 +91,5 @@ function handleShresholdSumbit(e) {
 
 function bindEvents() {
     $('#automatic-mode').change(handleAutomaticModeChange);
-    $('.threshold-submit').click(handleShresholdSumbit);
+    $('.threshold-submit').click(handleThresholdSumbit);
 }
