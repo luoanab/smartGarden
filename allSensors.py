@@ -72,6 +72,10 @@ TRANSISTORH = 26
 TRANSISTORR = 13
 HUMIDITY = 19
 
+//pins for output for infrared lightulb and for water pump
+var INFRARED = 5;
+var PUMP = 6;
+
 
 GPIO.setup(SPIMOSI, GPIO.OUT)
 GPIO.setup(SPIMISO, GPIO.IN)
@@ -81,6 +85,10 @@ GPIO.setup(SPICS, GPIO.OUT)
 #pins used for the transistor and humidity sensor
 GPIO.setup(TRANSISTORH, GPIO.OUT)
 GPIO.setup(HUMIDITY, GPIO.IN)
+
+#pins used for infrared and pump
+GPIO.setup(INFRARED, GPIO.OUT)
+GPIO.setup(PUMP, GPIO.OUT)
 
 #pin used as an input for the transistor that controlls the relay
 GPIO.setup(TRANSISTORR, GPIO.OUT)
@@ -104,11 +112,18 @@ try:
 
         temperatureValue = read_temp()
         print "\nTemperature: ",temperatureValue
+        
+        if (temperatureValue > 27) {
+            GPIO.output(INFRARED, False);
+        } else {
+            GPIO.output(INFRARED, True);
+        }
 
         GPIO.output(TRANSISTORH, humiditySensorOn)
         isDry = False
         if humiditySensorOn:
             isDry = GPIO.input(HUMIDITY)
+            
         
         if isDry:
             print "\nIt is dry!!! "

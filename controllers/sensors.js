@@ -18,6 +18,11 @@ var TRANSISTOR_RELAY = 13;
 var HUMIDITY_SENSOR = 19;
 var LUMINOSITY_SENSOR = 1; // this pin is on the shield, not on pi directly
 
+//pins for output for infrared lightulb and for water pump
+var INFRARED = 5;
+var PUMP = 6;
+
+
 var thresholds = thresholdsController.getThresholds();
 
 //init rpio with custom options
@@ -30,7 +35,7 @@ function init_rpio() {
 }
 
 //set custom pin values
-function set_pins(spi_clk, spi_miso, spi_mosi, spi_cs, tr_humidity, tr_relay, humidity_sensor, luminosity_sensor) {
+function set_pins(spi_clk, spi_miso, spi_mosi, spi_cs, tr_humidity, tr_relay, humidity_sensor, luminosity_sensor, infrared, pump) {
     SPI_CLK = spi_clk || 18;
     SPI_MISO = spi_miso || 23;
     SPI_MOSI = spi_mosi || 24;
@@ -39,6 +44,8 @@ function set_pins(spi_clk, spi_miso, spi_mosi, spi_cs, tr_humidity, tr_relay, hu
     TRANSISTOR_RELAY = tr_relay || 13;
     HUMIDITY_SENSOR = humidity_sensor || 19;
     LUMINOSITY_SENSOR = luminosity_sensor || 1;
+    INFRARED = infrared || 5;
+    PUMP = pump || 6;
 }
 
 function open_pins() {
@@ -49,6 +56,8 @@ function open_pins() {
     rpio.open(TRANSISTOR_HUMIDITY_SENSOR, rpio.OUTPUT);
     rpio.open(HUMIDITY_SENSOR, rpio.INPUT);
     rpio.open(TRANSISTOR_RELAY, rpio.OUTPUT);
+    rpio.open(INFRARED, rpio.OUTPUT);
+    rpio.open(PUMP, rpio.OUTPUT);
 }
 
 //Indicate that the pins will no longer be used, and clear any poll events associated with them
@@ -60,6 +69,8 @@ function cleanup() {
     rpio.close(TRANSISTOR_HUMIDITY_SENSOR);
     rpio.close(HUMIDITY_SENSOR);
     rpio.close(TRANSISTOR_RELAY);
+    rpio.close(INFRARED);
+    rpio.close(PUMP);
 }
 
 //read raw temparature data
@@ -90,11 +101,10 @@ function read_temp(){
             temp_c: parseFloat(temp_string) / 1000.0,
             temp_f: parseFloat(temp_string) / 1000.0 * 9.0 / 5.0 + 32.0
         }
-        console.log("temp is: ", temp);
+        
         //return temp in C and F
         return temp;
     }
-    consolelog.log("temp reading failed ...");
 }
 
 //read analog to digital function; used for luminosity sensor
