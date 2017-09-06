@@ -3,9 +3,14 @@ var operationState,
     sensorValues;
 
 $(document).ready(function() {
-    getOperation();
+    if(window.location.href.indexOf("settings") > -1) {
+        return;
+    } else if (window.location.href.indexOf("threshold") === -1) { //is on index
+        getOperation();
+        getSensorsData();
+    }
+    
     getAllThresholds();
-    getSensorsData();
     bindEvents();
 })
 
