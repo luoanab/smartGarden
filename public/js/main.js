@@ -51,7 +51,7 @@ function getOperation() {
     });
 }
 
-function handleAutomaticModeChange(e) {
+function handleAutomaticModeChange() {
     $.ajax({
         url: "sensors/operation",
         method: "PUT",
@@ -90,6 +90,6 @@ function handleShresholdSumbit(e) {
 }
 
 function bindEvents() {
-    $('#automatic-mode').change(handleAutomaticModeChange());
-    $('.threshold-submit').click(handleShresholdSumbit());
+    $('#automatic-mode').change(handleAutomaticModeChange);
+    $('.threshold-submit').click(handleShresholdSumbit);
 }
