@@ -73,8 +73,8 @@ TRANSISTORR = 13
 HUMIDITY = 19
 
 #pins for output for infrared lightulb and for water pump
-INFRARED = 5;
-PUMP = 6;
+INFRARED = 6;
+PUMP = 5;
 
 
 GPIO.setup(SPIMOSI, GPIO.OUT)
