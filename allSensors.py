@@ -96,6 +96,9 @@ GPIO.setup(TRANSISTORR, GPIO.OUT)
 humiditySensorOn = True
 
 try:
+    GPIO.output(INFRARED, False);
+    GPIO.output(PUMP, False);
+    
     while True:
         if (humiditySensorOn):
             humiditySensorOn = False
@@ -122,12 +125,14 @@ try:
         isDry = False
         if humiditySensorOn:
             isDry = GPIO.input(HUMIDITY)
-            
+            print "\nHUMIDITY IS::::", isDry
         
         if isDry:
             print "\nIt is dry!!! "
+            GPIO.output(PUMP, True);
         else:
             print "\nIt is not dry:) "
+            GPIO.output(PUMP, False);
             
         time.sleep(0.5)
 except Exception as e:
