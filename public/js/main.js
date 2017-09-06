@@ -36,7 +36,6 @@ function getAllThresholds() {
             //var selectedTh = $();
             populateThreshold(thresholds["1"]);
         }
-        
     });
 }
 
@@ -111,7 +110,12 @@ function handleThresholdSumbit(e) {
     });
 }
 
+function handleDropdownChange() {
+    console.log("here???");
+}
+
 function bindEvents() {
     $('#automatic-mode').change(handleAutomaticModeChange);
     $('.threshold-submit').click(handleThresholdSumbit);
+    $('#dropdown-thresholds').on('hidden.bs.dropdown', handleDropdownChange);
 }
