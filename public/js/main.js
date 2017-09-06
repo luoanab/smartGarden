@@ -8,6 +8,7 @@ $(document).ready(function() {
     } else if (window.location.href.indexOf("threshold") === -1) { //is on index
         getOperation();
         getSensorsData();
+        $('.dropdown-toggle').dropdown();
     }
     
     getAllThresholds();
