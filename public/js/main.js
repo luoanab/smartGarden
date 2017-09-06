@@ -27,13 +27,20 @@ function getAllThresholds() {
         url: "thresholds/all"
     }).done(function(response){
         thresholds = response.data;
-        populateForm($('#1'), thresholds["1"]);
-        populateForm($('#2'), thresholds["2"]);
-        populateForm($('#3'), thresholds["3"]);
+        
+        if($('form.threshold').length) {
+            populateThreshold($('#1'), thresholds["1"]);
+            populateThreshold($('#2'), thresholds["2"]);
+            populateThreshold($('#3'), thresholds["3"]);
+        } else {
+            //var selectedTh = $();
+            populateThreshold(parent, thresholds["1"]);
+        }
+        
     });
 }
 
-function populateForm(form, data) {
+function populateThreshold(form, data) {
     if (!data) { return; }
     form.find('.light-upper-value').val(data.lightUpperValue);
     form.find('.light-lower-value').val(data.lightLowerValue);
