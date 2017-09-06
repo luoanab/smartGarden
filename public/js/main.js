@@ -24,9 +24,9 @@ function getAllThresholds() {
         thresholds = response.data;
         //$('form.threshold');
         
-        var form1 = $("#1").html();
+        var form1 = $("#1");
         // Compile the template data into a function
-        var templateScript = Handlebars.compile(form1);
+        var templateScript = Handlebars.compile(form1.html());
 
         var context = thresholds["1"];
 
