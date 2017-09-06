@@ -8,7 +8,7 @@ $(document).ready(function() {
     } else if (window.location.href.indexOf("threshold") === -1) { //is on index
         getOperation();
         getSensorsData();
-        $('.dropdown-toggle').dropdown();
+        $('.dropdown-toggle.thresholds').dropdown();
     }
     
     getAllThresholds();
@@ -118,5 +118,5 @@ function handleDropdownChange() {
 function bindEvents() {
     $('#automatic-mode').change(handleAutomaticModeChange);
     $('.threshold-submit').click(handleThresholdSumbit);
-    $('#dropdown-thresholds').on('hidden.bs.dropdown', handleDropdownChange);
+    $('.dropdown-toggle.thresholds').on('hidden.bs.dropdown', handleDropdownChange);
 }
