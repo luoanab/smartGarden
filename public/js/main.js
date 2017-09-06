@@ -29,6 +29,7 @@ function getAllThresholds() {
 }
 
 function populateForm(form, data) {
+    if (!data) { return; }
     form.find('.light-upper-value').val(data.lightUpperValue);
     form.find('.light-lower-value').val(data.lightLowerValue);
     form.find('.moisture-upper-value').val(data.moistureUpperValue);
