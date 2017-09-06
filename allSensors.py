@@ -113,11 +113,10 @@ try:
         temperatureValue = read_temp()
         print "\nTemperature: ",temperatureValue
         
-        if (temperatureValue > 27) {
+        if (temperatureValue > 27):
             GPIO.output(INFRARED, False);
-        } else {
+        else:
             GPIO.output(INFRARED, True);
-        }
 
         GPIO.output(TRANSISTORH, humiditySensorOn)
         isDry = False
