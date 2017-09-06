@@ -8,16 +8,15 @@
                 <div class="panel-body">
                     <p class="text-center description">This group is for plants which need a high level of water, heat and luminosity</p>
                     <form class="threshold" id='1'>
-                        <script id="handlebars-demo" type="text/x-handlebars-template">
                         <fieldset>
                             <legend>Light thresholds</legend>
                             <div class="form-group">
                                 <label class="control-label" for="light-upper-value">Upper Threshold</label>
-                                <input class="form-control threshold-input light-upper-value" type="number" required="" value={{lightUpperValue}}>
+                                <input class="form-control threshold-input light-upper-value" type="number" required="">
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="light-lower-value">Lower Threshold</label>
-                                <input class="form-control threshold-input light-lower-value" type="number" required=""  value={{lightLowerValue}}>
+                                <input class="form-control threshold-input light-lower-value" type="number" required="">
                             </div>
                         </fieldset>
                         <fieldset>
@@ -43,7 +42,6 @@
                             </div>
                         </fieldset>
                         <button class="btn btn-success btn-lg threshold-submit save-threshold" type="submit">Save </button>
-                        </script>
                     </form>
                 </div>
             </div>

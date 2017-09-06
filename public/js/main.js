@@ -22,21 +22,19 @@ function getAllThresholds() {
         url: "thresholds/all"
     }).done(function(response){
         thresholds = response.data;
-        //$('form.threshold');
-        
-        var form1 = $("#1");
-        var tpl = form1.html();
-        // Compile the template data into a function
-        var templateScript = Handlebars.compile(tpl);
-
-        var context = thresholds["1"];
-
-        // html = 'My name is Ritesh Kumar. I am a developer.'
-        var html = templateScript(context);
-
-        // Insert the HTML code into the page
-        form1.html(html);
+        populateForm($('#1'), thresholds["1"]);
+        populateForm($('#2'), thresholds["2"]);
+        populateForm($('#3'), thresholds["3"]);
     });
+}
+
+function populateForm(form, data) {
+    form.find('.light-upper-value').val(data.lightUpperValue);
+    form.find('.light-lower-value').val(data.lightLowerValue);
+    form.find('.moisture-upper-value').val(data.moistureUpperValue);
+    form.find('.moisture-lower-value').val(data.moistureLowerValue);
+    form.find('.temp-upper-value').val(data.tempUpperValue);
+    form.find('.temp-lower-value').val(data.tempLowerValue);
 }
 
 function getOperation() {
