@@ -363,11 +363,11 @@ function get_operation_mode(data, callback) {
         }
         
         AUTO = response.operationMode == "MANUAL" ? false : true;
+        console.log("i set auto to...: ", AUTO);
         if(AUTO) {
             auto_mode();
         }
         
-        console.log("i set auto to...: ", AUTO);
         return callback(null, {
             operation_mode: response.operationMode
         });        
