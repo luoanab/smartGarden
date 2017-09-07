@@ -121,32 +121,19 @@ function handleThresholdSumbit(e) {
 
 function handleSetLight() {
     var heat = $(".heat-on");
-    if(heat.hasClass("off")) {
-        $.ajax({
-            url: "sensors/light",
-            method: "PUT",
-            data: {
-                state: true
-            }
-        }).done(function(){
-            //
-        }).fail(function(){
-            // display error here
-        });
-    } else {
-        $.ajax({
-            url: "sensors/light",
-            method: "PUT",
-            data: {
-                state: false
-            }
-        }).done(function(){
-            //
-        }).fail(function(){
-            // display error here
-        });
-    }
-    
+    var state = heat.hasClass("off") ? true : false;
+//    if(heat.hasClass("off")) {
+    $.ajax({
+        url: "sensors/light",
+        method: "PUT",
+        data: {
+            state: state
+        }
+    }).done(function(){
+        //
+    }).fail(function(){
+        // display error here
+    });
     heat.toggleClass("off");
 }
 
