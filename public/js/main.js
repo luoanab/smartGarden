@@ -21,7 +21,7 @@ function getSensorsData() {
     $.ajax({
         url: "sensors"
     }).done(function(response){
-        //sensorValues = response.data;
+        sensorValues = response;
         var temp = response.temperature_c;
         var lum = response.luminosity;
         var hum = response.moisture;
