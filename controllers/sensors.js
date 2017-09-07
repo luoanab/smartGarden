@@ -23,7 +23,9 @@ var INFRARED = 5;
 var PUMP = 6;
 
 var AUTO = get_operation_mode() || false;
+console.log("AUTO IS INITIALISED TO: ", AUTO);
 var thresholds = thresholdsController.getThresholds();
+console.log("THRESHOLDS IS INITIALIZED TO:", thresholds);
 
 //init rpio with custom options
 function init_rpio() {
@@ -58,8 +60,6 @@ function open_pins() {
     rpio.open(TRANSISTOR_RELAY, rpio.OUTPUT);
     rpio.open(INFRARED, rpio.OUTPUT);
     rpio.open(PUMP, rpio.OUTPUT);
-    
-//    read_auto();
 }
 
 function read_auto() {
