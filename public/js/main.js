@@ -6,8 +6,8 @@ $(document).ready(function() {
     if(window.location.href.indexOf("settings") > -1) {
         return;
     } else if (window.location.href.indexOf("threshold") === -1) { //is on index
-        getAllThresholds();
         getSensorsData();
+        getAllThresholds();
         getOperation();
         $('.dropdown-toggle.thresholds').dropdown();
     } else {
