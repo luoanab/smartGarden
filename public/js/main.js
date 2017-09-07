@@ -158,8 +158,11 @@ function handleDropdownChange() {
 function bindEvents() {
     $('#automatic-mode').change(handleAutomaticModeChange);
     $('.threshold-submit').click(handleThresholdSumbit);
+    $(".heat-on").click(handleSetLight);
+    
     //$('.dropdown-toggle.thresholds').on('hidden.bs.dropdown', handleDropdownChange);
     setInterval(function(){
         getSensorsData();
     }, 10000);
+    
 }
