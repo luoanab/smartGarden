@@ -218,19 +218,22 @@ function set_auto() {
         if (sensor_values.luminosity <  th1.lightLowerValue) {
             console.log("here");
             power_sensor(TRANSISTOR_RELAY, true);
-//            setInterval(function() {
-//                power_sensor(TRANSISTOR_RELAY, false);
-//                var luminosity = read_luminosity();
-//                if (luminosity >= th1.lightUpperValue) {
-//                    clearInterval();
-//                    power_sensor(TRANSISTOR_RELAY, false);
-//                }
-//                power_sensor(TRANSISTOR_RELAY, true);
-//            }, 10000);
         } else { // i might not need this else
             power_sensor(TRANSISTOR_RELAY, false);
         }
         
+        if (sensor_values.moisture < th1.moistureLowerValue) {
+            setWater(true);
+        } else { // i might not need this else
+            setWater(false);
+        }
+
+        if (sensor_values.temperature_c < th1.tempLowerValue) {
+            setHeat(true);
+        } else { // i might not need this else
+            setHeat(false);
+        } 
+         
         setTimeout(function (){}, 5000);
     }
 }
@@ -242,9 +245,6 @@ function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_th
         thresholds();
         th = thresholds;
         th1 = th["1"];
-//        lum_threshold_down = lum_threshold_down || 300;
-//        lum_threshold_up = lum_threshold_up || 500;
-//        temperature_threshold = temperature_threshold || 21;
         console.log({sensor_values: sensor_values,
                     lum_threshold_down: th1.lightLowerValue,
                     lum_threshold_up: th1.lightUpperValue, 
