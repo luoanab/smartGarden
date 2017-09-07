@@ -28,6 +28,7 @@ function getSensorsData() {
         $(".temp .sensor_value").text(temp);
         $(".light .sensor_value").text(lum);
         $(".moisture .sensor_value").text(hum);
+        setColors(1);
     });
 }
 
@@ -50,6 +51,10 @@ function getAllThresholds() {
 }
 
 function setColors(index) {
+    if(!th || !sensorValues) {
+        return;
+    }
+    
     var th = thresholds["1"];
     
     if (th.tempLowerValue > sensorValues.luminosity || sensorValues.luminosity > th.tempUpperValue) {
