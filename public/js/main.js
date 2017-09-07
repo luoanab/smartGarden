@@ -135,7 +135,7 @@ function handleSetLight() {
         });
     } else {
         $.ajax({
-            url: "sensors/setLight",
+            url: "sensors/light",
             method: "PUT",
             data: {
                 state: false
