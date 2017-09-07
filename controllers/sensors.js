@@ -59,7 +59,7 @@ function open_pins() {
     rpio.open(INFRARED, rpio.OUTPUT);
     rpio.open(PUMP, rpio.OUTPUT);
     
-    read_auto();
+//    read_auto();
 }
 
 function read_auto() {
@@ -78,7 +78,7 @@ function read_auto() {
 //            data: response
 //        })
         return response;
-    })
+    });
     console.log("mode is: ", mode);
     AUTO = mode == "MANUAL" ? false: true;
 }
@@ -355,10 +355,15 @@ function set_operation_mode(data, callback) {
 }
 
 function get_operation_mode(data, callback) {
+    callback = (typeof callback === 'function') ? callback : function() {}; 
+    
     dbController.getOperationMode(null, function(err, response) {
         if (err) {
             return callback(err);
         }
+        
+        AUTO = response.operationMode == "MANUAL" ? false : true;
+        console.log("i set auto to...: ", AUTO);
         return callback(null, {
             operation_mode: response.operationMode
         });        
