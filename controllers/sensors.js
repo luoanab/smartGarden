@@ -195,9 +195,9 @@ function read_sensor_values () {
 function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_threshold_down, temp_threshold_up) {
     while (AUTO) {
         var sensor_values = read_sensor_values();
-        lum_threshold_down = lum_threshold_down || 300;
-        lum_threshold_up = lum_threshold_up || 500;
-        temperature_threshold = temperature_threshold || 21;
+//        lum_threshold_down = lum_threshold_down || 300;
+//        lum_threshold_up = lum_threshold_up || 500;
+//        temperature_threshold = temperature_threshold || 21;
         console.log({sensor_values: sensor_values,
                     lum_threshold_down: thresholds.lightLowerValue,
                     lum_threshold_up: thresholds.lightUpperValue, 
