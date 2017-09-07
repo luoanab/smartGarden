@@ -6,12 +6,14 @@ $(document).ready(function() {
     if(window.location.href.indexOf("settings") > -1) {
         return;
     } else if (window.location.href.indexOf("threshold") === -1) { //is on index
-        getOperation();
+        getAllThresholds();
         getSensorsData();
+        getOperation();
         $('.dropdown-toggle.thresholds').dropdown();
+    } else {
+        getAllThresholds();
     }
     
-    getAllThresholds();
     bindEvents();
 })
 
@@ -20,9 +22,14 @@ function getSensorsData() {
         url: "sensors"
     }).done(function(response){
         //sensorValues = response.data;
-        $(".temp .sensor_value").text(response.temperature_c);
-        $(".light .sensor_value").text(response.luminosity);
-        $(".moisture .sensor_value").text(response.moisture);
+        var temp = response.temperature_c;
+        var lum = response.luminosity;
+        var hum = response.moisture;
+        $(".temp .sensor_value").text(temp);
+        $(".light .sensor_value").text(lum);
+        $(".moisture .sensor_value").text(hum);
+        
+        if(thresholds.)
     });
 }
 

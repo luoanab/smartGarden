@@ -58,6 +58,9 @@ var dbController = {
     
     getThresholds: function(data, callback) {
         callback = (typeof callback === 'function') ? callback : function() {};
+        if(typeof callback !== 'function') {
+            return data;
+        }
 
         var data = db.getData("/thresholds");
         return callback(null, data);
