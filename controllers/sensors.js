@@ -204,7 +204,7 @@ function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_th
     while (AUTO) {
         var sensor_values = read_sensor_values();
         thresholds = thresholds();
-        console.log("threasholds: ... ", thresholds);
+        thresholds = thresholds["1"];
 //        lum_threshold_down = lum_threshold_down || 300;
 //        lum_threshold_up = lum_threshold_up || 500;
 //        temperature_threshold = temperature_threshold || 21;
