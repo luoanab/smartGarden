@@ -22,7 +22,7 @@ var LUMINOSITY_SENSOR = 1; // this pin is on the shield, not on pi directly
 var INFRARED = 5;
 var PUMP = 6;
 
-
+var AUTO = get_operation_mode() || false;
 var thresholds = thresholdsController.getThresholds();
 
 //init rpio with custom options
@@ -58,6 +58,11 @@ function open_pins() {
     rpio.open(TRANSISTOR_RELAY, rpio.OUTPUT);
     rpio.open(INFRARED, rpio.OUTPUT);
     rpio.open(PUMP, rpio.OUTPUT);
+    
+    if(AUTO) {
+        cosnole.log("starting mode auto...");
+        auto_mode();
+    }
 }
 
 //Indicate that the pins will no longer be used, and clear any poll events associated with them
@@ -170,25 +175,59 @@ function read_sensor_values () {
 }
 
 function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_threshold_down, temp_threshold_up) {
-    var sensor_values = read_sensor_values();
-    lum_threshold_down = lum_threshold_down || 300;
-    lum_threshold_up = lum_threshold_up || 500;
-    temperature_threshold = temperature_threshold || 21;
-    
-    if (sensor_values.luminosity < luminosity_threshold) {
-        power_sensor(TRANSISTOR_RELAY, true);
-        setInterval(function() {
-            power_sensor(TRANSISTOR_RELAY, false);
-            var luminosity = read_luminosity();
-            if (luminosity >= lum_threshold_up) {
-                clearInterval();
-                power_sensor(TRANSISTOR_RELAY, false);
-            }
+    while (AUTO) {
+        var sensor_values = read_sensor_values();
+        lum_threshold_down = lum_threshold_down || 300;
+        lum_threshold_up = lum_threshold_up || 500;
+        temperature_threshold = temperature_threshold || 21;
+        console.log({sensor_values: sensor_values,
+                    lum_threshold_down: thresholds.lightLowerValue,
+                    lum_threshold_up: thresholds.lightUpperValue, 
+                    temp_lower_threshold: thresholds.tempLowerValue,
+                     
+                    });
+        
+        
+        if (sensor_values.luminosity <  thresholds.lightLowerValue) {
             power_sensor(TRANSISTOR_RELAY, true);
-        }, 10000);
-    } else { // i might not need this else
-        power_sensor(TRANSISTOR_RELAY, false);
-    }    
+            setInterval(function() {
+                power_sensor(TRANSISTOR_RELAY, false);
+                var luminosity = read_luminosity();
+                if (luminosity >= thresholds.lightUpperValue) {
+                    clearInterval();
+                    power_sensor(TRANSISTOR_RELAY, false);
+                }
+                power_sensor(TRANSISTOR_RELAY, true);
+            }, 10000);
+        } else { // i might not need this else
+            power_sensor(TRANSISTOR_RELAY, false);
+        }
+        
+        setTimeout(function (){}, 5000);
+    }
+//    var sensor_values = read_sensor_values();
+//    lum_threshold_down = lum_threshold_down || 300;
+//    lum_threshold_up = lum_threshold_up || 500;
+//    temperature_threshold = temperature_threshold || 21;
+//    
+//    if (sensor_values.luminosity < luminosity_threshold) {
+//        power_sensor(TRANSISTOR_RELAY, true);
+//        setInterval(function() {
+//            power_sensor(TRANSISTOR_RELAY, false);
+//            var luminosity = read_luminosity();
+//            if (luminosity >= lum_threshold_up) {
+//                clearInterval();
+//                power_sensor(TRANSISTOR_RELAY, false);
+//            }
+//            power_sensor(TRANSISTOR_RELAY, true);
+//        }, 10000);
+//    } else { // i might not need this else
+//        power_sensor(TRANSISTOR_RELAY, false);
+//    }  
+    
+    
+    
+    
 //    
 //    if (sensor_values.humidity < hum_threshold_down) {
 //        relay_on(true);

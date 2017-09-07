@@ -143,8 +143,3 @@ except KeyboardInterrupt:
     print "You killed me! =("
 finally:
     GPIO.cleanup()
-
-
-
-
-    
