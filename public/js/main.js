@@ -123,7 +123,7 @@ function handleSetLight() {
     var heat = $(".heat-on");
     if(heat.hasClass("off")) {
         $.ajax({
-            url: "sensors/setLight",
+            url: "sensors/light",
             method: "PUT",
             data: {
                 state: true
