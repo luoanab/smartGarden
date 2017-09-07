@@ -17,6 +17,10 @@ var thresholdsController = {
     
     getThresholds: function(data, callback) {
         dbController.getThresholds(null, function(err, response) {
+            if(typeof callback !== 'function') {
+                return data;
+            }
+
             callback = (typeof callback === 'function') ? callback : function() {}; 
             
             if (err) {
