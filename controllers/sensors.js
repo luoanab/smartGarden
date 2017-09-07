@@ -324,15 +324,15 @@ function power_sensor(sensor, on) {
 }
 
 function setHeat(state){
-    power_sensor(TRANSISTOR_RELAY, state);
+    power_sensor(INFRARED, state);
 }
 
 function setWater(state){
-    power_sensor(TRANSISTOR_HUMIDITY_SENSOR, state);
+    power_sensor(PUMP, state);
 }
 
 function setLight(state) {
-    //power_sensor(, state);
+    power_sensor(TRANSISTOR_RELAY, state);
 }
 
 function get_heat_state() {
@@ -375,9 +375,8 @@ function get_operation_mode(data, callback) {
         }
         
         AUTO = response.operationMode == "MANUAL" ? false : true;
-        console.log("i set auto to...: ", AUTO);
         if(AUTO) {
-            auto_mode();
+//            auto_mode();
         }
         
         return callback(null, {

@@ -28,8 +28,6 @@ function getSensorsData() {
         $(".temp .sensor_value").text(temp);
         $(".light .sensor_value").text(lum);
         $(".moisture .sensor_value").text(hum);
-        
-        if(thresholds.)
     });
 }
 
@@ -120,6 +118,38 @@ function handleThresholdSumbit(e) {
         // display error here
     });
 }
+
+function handleSetLight() {
+    var heat = $(".heat-on");
+    if(heat.hasClass("off")) {
+        $.ajax({
+            url: "sensors/setLight",
+            method: "PUT",
+            data: {
+                state: true
+            }
+        }).done(function(){
+            //
+        }).fail(function(){
+            // display error here
+        });
+    } else {
+        $.ajax({
+            url: "sensors/setLight",
+            method: "PUT",
+            data: {
+                state: false
+            }
+        }).done(function(){
+            //
+        }).fail(function(){
+            // display error here
+        });
+    }
+    
+    heat.toggleClass("off");
+}
+
 
 function handleDropdownChange() {
     console.log("here???");
