@@ -44,8 +44,19 @@ function getAllThresholds() {
         } else {
             //var selectedTh = $();
             populateThreshold(thresholds["1"]);
+            setColors(1);
         }
     });
+}
+
+function setColors(index) {
+    var th = thresholds["1"];
+    
+    if (th.tempLowerValue > sensorValues.luminosity || sensorValues.luminosity > th.tempUpperValue) {
+        $(".temp").removeClass("green").addClass("red");    
+    } else {
+        $(".temp").removeClass("red").addClass("green"); 
+    }
 }
 
 function populateForm(form, data) {
