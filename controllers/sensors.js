@@ -59,10 +59,28 @@ function open_pins() {
     rpio.open(INFRARED, rpio.OUTPUT);
     rpio.open(PUMP, rpio.OUTPUT);
     
-    if(AUTO) {
-        cosnole.log("starting mode auto...");
-        auto_mode();
-    }
+    read_auto();
+}
+
+function read_auto() {
+    console.log("reading auto...");
+    var mode = get_operation_mode(null, function(err, response) {
+//        if (err) {
+//            console.log("failed reading auto");
+//            return res.json({
+//                success: false,
+//                error: err
+//            })
+//        }
+//        console.log("auto is: ", response);
+//        return res.json({
+//            success: true,
+//            data: response
+//        })
+        return response;
+    })
+    console.log("mode is: ", mode);
+    AUTO = mode == "MANUAL" ? false: true;
 }
 
 //Indicate that the pins will no longer be used, and clear any poll events associated with them
