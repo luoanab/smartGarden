@@ -196,7 +196,7 @@ function thresholds() {
     thresholdsController.getThresholds(null, function(err, response) {
         console.log("got thresholds...: ", response); 
         thresholds = response;
-        return;
+        return response;
     })
 }
 
