@@ -216,7 +216,7 @@ function set_auto() {
         
         
         if (sensor_values.luminosity <  th1.lightLowerValue) {
-            console.log("here");
+//            console.log("here");
             power_sensor(TRANSISTOR_RELAY, true);
         } else { // i might not need this else
             power_sensor(TRANSISTOR_RELAY, false);
