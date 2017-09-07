@@ -119,8 +119,26 @@ function handleThresholdSumbit(e) {
     });
 }
 
-function handleSetLight() {
+function handleSetHeat() {
     var heat = $(".heat-on");
+    var state = heat.hasClass("off") ? true : false;
+//    if(heat.hasClass("off")) {
+    $.ajax({
+        url: "sensors/heat",
+        method: "PUT",
+        data: {
+            state: state
+        }
+    }).done(function(){
+        //
+    }).fail(function(){
+        // display error here
+    });
+    heat.toggleClass("off");
+}
+
+function handleSetLight() {
+    var heat = $(".light-on");
     var state = heat.hasClass("off") ? true : false;
 //    if(heat.hasClass("off")) {
     $.ajax({
@@ -137,6 +155,23 @@ function handleSetLight() {
     heat.toggleClass("off");
 }
 
+function handleSetWater() {
+    var heat = $(".water-on");
+    var state = heat.hasClass("off") ? true : false;
+//    if(heat.hasClass("off")) {
+    $.ajax({
+        url: "sensors/water",
+        method: "PUT",
+        data: {
+            state: state
+        }
+    }).done(function(){
+        //
+    }).fail(function(){
+        // display error here
+    });
+    heat.toggleClass("off");
+}
 
 function handleDropdownChange() {
     console.log("here???");
@@ -145,7 +180,9 @@ function handleDropdownChange() {
 function bindEvents() {
     $('#automatic-mode').change(handleAutomaticModeChange);
     $('.threshold-submit').click(handleThresholdSumbit);
-    $(".heat-on").click(handleSetLight);
+    $(".heat-on").click(handleSetHeat);
+    $(".light-on").click(handleSetLight);
+    $(".water-on").click(handleSetWater);
     
     //$('.dropdown-toggle.thresholds').on('hidden.bs.dropdown', handleDropdownChange);
     setInterval(function(){
