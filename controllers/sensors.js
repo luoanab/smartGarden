@@ -200,6 +200,42 @@ function thresholds() {
     });
 }
 
+function set_auto() {
+     while (AUTO) {
+        var sensor_values = read_sensor_values();
+        thresholds();
+        th = thresholds;
+        th1 = th["1"];
+         
+        console.log({sensor_values: sensor_values,
+                    lum_threshold_down: th1.lightLowerValue,
+                    lum_threshold_up: th1.lightUpperValue, 
+                    temp_lower_threshold: th1.tempLowerValue,
+                     
+                    });
+        
+        
+        if (sensor_values.luminosity <  th1.lightLowerValue) {
+            console.log("here");
+            power_sensor(TRANSISTOR_RELAY, true);
+            setInterval(function() {
+                power_sensor(TRANSISTOR_RELAY, false);
+                var luminosity = read_luminosity();
+                if (luminosity >= th1.lightUpperValue) {
+                    clearInterval();
+                    power_sensor(TRANSISTOR_RELAY, false);
+                }
+                power_sensor(TRANSISTOR_RELAY, true);
+            }, 10000);
+        } else { // i might not need this else
+            power_sensor(TRANSISTOR_RELAY, false);
+        }
+        
+        setTimeout(function (){}, 5000);
+    }
+}
+
+
 function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_threshold_down, temp_threshold_up) {
     while (AUTO) {
         var sensor_values = read_sensor_values();
@@ -360,6 +396,8 @@ function set_operation_mode(data, callback) {
         if (err) {
             return callback(err);
         }
+        AUTO = data.mode === "MANUAL" ? false : true;
+        
         return callback(null, {
             operation_mode: response.operationMode
         });        
@@ -375,8 +413,9 @@ function get_operation_mode(data, callback) {
         }
         
         AUTO = response.operationMode == "MANUAL" ? false : true;
-        if(AUTO) {
+        if (AUTO) {
 //            auto_mode();
+            set_auto();
         }
         
         return callback(null, {
