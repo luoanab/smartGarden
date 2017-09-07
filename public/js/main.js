@@ -57,10 +57,22 @@ function setColors(index) {
     
     var th = thresholds["1"];
     
-    if (th.tempLowerValue > sensorValues.luminosity || sensorValues.luminosity > th.tempUpperValue) {
+    if (th.tempLowerValue > sensorValues.temperature_c || sensorValues.temperature_c > th.tempUpperValue) {
         $(".temp").removeClass("green").addClass("red");    
     } else {
         $(".temp").removeClass("red").addClass("green"); 
+    }
+    
+    if (th.moistureLowerValue > sensorValues.moisture || sensorValues.moisture > th.moistureUpperValue) {
+        $(".moisture").removeClass("green").addClass("red");    
+    } else {
+        $(".moisture").removeClass("red").addClass("green"); 
+    }
+    
+    if (th.lightLowerValue > sensorValues.luminosity || sensorValues.luminosity > th.lightUpperValue) {
+        $(".light").removeClass("green").addClass("red");    
+    } else {
+        $(".light").removeClass("red").addClass("green"); 
     }
 }
 
