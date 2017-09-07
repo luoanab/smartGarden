@@ -218,15 +218,15 @@ function set_auto() {
         if (sensor_values.luminosity <  th1.lightLowerValue) {
             console.log("here");
             power_sensor(TRANSISTOR_RELAY, true);
-            setInterval(function() {
-                power_sensor(TRANSISTOR_RELAY, false);
-                var luminosity = read_luminosity();
-                if (luminosity >= th1.lightUpperValue) {
-                    clearInterval();
-                    power_sensor(TRANSISTOR_RELAY, false);
-                }
-                power_sensor(TRANSISTOR_RELAY, true);
-            }, 10000);
+//            setInterval(function() {
+//                power_sensor(TRANSISTOR_RELAY, false);
+//                var luminosity = read_luminosity();
+//                if (luminosity >= th1.lightUpperValue) {
+//                    clearInterval();
+//                    power_sensor(TRANSISTOR_RELAY, false);
+//                }
+//                power_sensor(TRANSISTOR_RELAY, true);
+//            }, 10000);
         } else { // i might not need this else
             power_sensor(TRANSISTOR_RELAY, false);
         }
