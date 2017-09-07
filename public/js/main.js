@@ -51,7 +51,7 @@ function getAllThresholds() {
 }
 
 function setColors(index) {
-    if(!th || !sensorValues) {
+    if(!thresholds || !sensorValues) {
         return;
     }
     
