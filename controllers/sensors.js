@@ -24,7 +24,7 @@ var PUMP = 6;
 
 var AUTO = get_operation_mode() || false;
 console.log("AUTO IS INITIALISED TO: ", AUTO);
-var thresholds = thresholdsController.getThresholds();
+var thresholds;
 console.log("THRESHOLDS IS INITIALIZED TO:", thresholds);
 
 //init rpio with custom options
@@ -195,6 +195,8 @@ function read_sensor_values () {
 function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_threshold_down, temp_threshold_up) {
     while (AUTO) {
         var sensor_values = read_sensor_values();
+        thresholds = thresholdsController.getThresholds();
+        console.log("threasholds: ... ", thresholds);
 //        lum_threshold_down = lum_threshold_down || 300;
 //        lum_threshold_up = lum_threshold_up || 500;
 //        temperature_threshold = temperature_threshold || 21;
