@@ -193,11 +193,11 @@ function read_sensor_values () {
 }
 
 function thresholds() {
-    thresholdsController.getThresholds(null, function(err, response) {
+   return thresholdsController.getThresholds(null, function(err, response) {
         console.log("got thresholds...: ", response); 
-        thresholds = response;
+//        thresholds = response;
         return response;
-    })
+    });
 }
 
 function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_threshold_down, temp_threshold_up) {
