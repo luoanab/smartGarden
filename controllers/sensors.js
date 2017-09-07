@@ -192,6 +192,16 @@ function read_sensor_values () {
     return sensor_values;
 }
 
+function thresholds() {
+    thresholdsController.getThresholds: function(data, callback) {
+        dbController.getThresholds(null, function(err, response) {
+            console.log("got thresholds...: ", response); 
+            thresholds = response;
+            return;
+        })
+    }
+}
+
 function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_threshold_down, temp_threshold_up) {
     while (AUTO) {
         var sensor_values = read_sensor_values();
