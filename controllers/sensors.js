@@ -205,25 +205,25 @@ function auto_mode (lum_threshold, hum_threshold_down, hum_threshold_up, temp_th
         var sensor_values = read_sensor_values();
         thresholds();
         th = thresholds;
-        console.log("TH: ", th);
-        thresholds = th["1"];
+        th1 = th["1"];
 //        lum_threshold_down = lum_threshold_down || 300;
 //        lum_threshold_up = lum_threshold_up || 500;
 //        temperature_threshold = temperature_threshold || 21;
         console.log({sensor_values: sensor_values,
-                    lum_threshold_down: thresholds.lightLowerValue,
-                    lum_threshold_up: thresholds.lightUpperValue, 
-                    temp_lower_threshold: thresholds.tempLowerValue,
+                    lum_threshold_down: th1.lightLowerValue,
+                    lum_threshold_up: th1.lightUpperValue, 
+                    temp_lower_threshold: th1.tempLowerValue,
                      
                     });
         
         
-        if (sensor_values.luminosity <  thresholds.lightLowerValue) {
+        if (sensor_values.luminosity <  th1.lightLowerValue) {
+            console.log("here");
             power_sensor(TRANSISTOR_RELAY, true);
             setInterval(function() {
                 power_sensor(TRANSISTOR_RELAY, false);
                 var luminosity = read_luminosity();
-                if (luminosity >= thresholds.lightUpperValue) {
+                if (luminosity >= th1.lightUpperValue) {
                     clearInterval();
                     power_sensor(TRANSISTOR_RELAY, false);
                 }
