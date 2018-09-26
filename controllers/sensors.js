@@ -415,7 +415,7 @@ function get_operation_mode(data, callback) {
         AUTO = response.operationMode == "MANUAL" ? false : true;
         if (AUTO) {
 //            auto_mode();
-            set_auto();
+     //       set_auto();
         }
         
         return callback(null, {

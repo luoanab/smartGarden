@@ -1,0 +1,32 @@
+{
+    "operationMode": "AUTO",
+    "thresholds": {
+        "1": {
+            "id": "1",
+            "lightUpperValue": "35",
+            "lightLowerValue": "27",
+            "tempUpperValue": "87",
+            "tempLowerValue": "11",
+            "moistureUpperValue": "22",
+            "moistureLowerValue": "33"
+        },
+        "2": {
+            "id": "2",
+            "lightUpperValue": "11",
+            "lightLowerValue": "22",
+            "tempUpperValue": "33",
+            "tempLowerValue": "44",
+            "moistureUpperValue": "55",
+            "moistureLowerValue": "66"
+        },
+        "3": {
+            "id": "3",
+            "lightUpperValue": "44",
+            "lightLowerValue": "55",
+            "tempUpperValue": "66",
+            "tempLowerValue": "77",
+            "moistureUpperValue": "88",
+            "moistureLowerValue": "99"
+        }
+    }
+}
